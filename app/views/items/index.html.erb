@@ -4,10 +4,21 @@
 
 <div id="items">
   <% @items.each do |item| %>
-    <%= render item %>
-    <p>
-      <%= link_to "Show this item", item %>
-    </p>
+    <div class="card w-50 mb-2 p-2">
+      <div class="d-flex justify-content-between w-50">
+        <p>
+          <strong>Name:</strong>
+          <%= item.item_name %>
+        </p>
+        <p>
+          <strong>Category:</strong>
+          <%= item.category %>
+        </p>
+      </div>
+      <p>
+        <%= link_to "Show this item", item %>
+      </p>
+    </div>
   <% end %>
 </div>
 

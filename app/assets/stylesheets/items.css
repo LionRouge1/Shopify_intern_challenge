@@ -1,0 +1,12 @@
+.field_with_errors > input {
+    background-color: rgba(255, 0, 0, 0.356);
+}
+
+.field_with_errors > label {
+    color: red;
+}
+
+.required > label::after {
+    content: ' *';
+    color: red;
+}
