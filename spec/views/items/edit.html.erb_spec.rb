@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe "items/edit", type: :view do
   let(:item) {
     Item.create!(
-      item_name: "MyString",
-      category: "MyString"
+        item_name: 'Tomato',
+        price: 67,
+        category: 'Vegetable',
+        expire_at: '2021-05-01'
     )
   }
 

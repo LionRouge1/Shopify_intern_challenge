@@ -18,11 +18,21 @@ RSpec.describe "/items", type: :request do
   # Item. As you add validations to Item, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      item_name: 'Tomato',
+      price: 67,
+      category: 'Vegetable',
+      expire_at: '2021-05-01'
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      item_name: '',
+      price: 0,
+      category: 'Vegetable',
+      expired_at: '2021-05-01'
+    }
   }
 
   describe "GET /index" do
@@ -89,14 +99,19 @@ RSpec.describe "/items", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          item_name: 'Tomato',
+          price: 6,
+          category: 'Fruit',
+          expire_at: '2021-05-01'
+        }
       }
 
       it "updates the requested item" do
         item = Item.create! valid_attributes
         patch item_url(item), params: { item: new_attributes }
         item.reload
-        skip("Add assertions for updated state")
+        expect(item.category).to eq('Fruit')
       end
 
       it "redirects to the item" do
