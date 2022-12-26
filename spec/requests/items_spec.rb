@@ -12,109 +12,106 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/items", type: :request do
-  
+RSpec.describe '/items', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Item. As you add validations to Item, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     {
       item_name: 'Tomato',
       price: 67,
       category: 'Vegetable',
       expire_at: '2021-05-01'
     }
-  }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     {
       item_name: '',
       price: 0,
       category: 'Vegetable',
       expired_at: '2021-05-01'
     }
-  }
+  end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Item.create! valid_attributes
       get items_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       item = Item.create! valid_attributes
       get item_url(item)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
+  describe 'GET /new' do
+    it 'renders a successful response' do
       get new_item_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /edit" do
-    it "renders a successful response" do
+  describe 'GET /edit' do
+    it 'renders a successful response' do
       item = Item.create! valid_attributes
       get edit_item_url(item)
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Item" do
-        expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Item' do
+        expect do
           post items_url, params: { item: valid_attributes }
-        }.to change(Item, :count).by(1)
+        end.to change(Item, :count).by(1)
       end
 
-      it "redirects to the created item" do
+      it 'redirects to the created item' do
         post items_url, params: { item: valid_attributes }
         expect(response).to redirect_to(item_url(Item.last))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Item" do
-        expect {
+    context 'with invalid parameters' do
+      it 'does not create a new Item' do
+        expect do
           post items_url, params: { item: invalid_attributes }
-        }.to change(Item, :count).by(0)
+        end.to change(Item, :count).by(0)
       end
 
-    
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post items_url, params: { item: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
+      let(:new_attributes) do
         {
           item_name: 'Tomato',
           price: 6,
           category: 'Fruit',
           expire_at: '2021-05-01'
         }
-      }
+      end
 
-      it "updates the requested item" do
+      it 'updates the requested item' do
         item = Item.create! valid_attributes
         patch item_url(item), params: { item: new_attributes }
         item.reload
         expect(item.category).to eq('Fruit')
       end
 
-      it "redirects to the item" do
+      it 'redirects to the item' do
         item = Item.create! valid_attributes
         patch item_url(item), params: { item: new_attributes }
         item.reload
@@ -122,26 +119,24 @@ RSpec.describe "/items", type: :request do
       end
     end
 
-    context "with invalid parameters" do
-    
+    context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         item = Item.create! valid_attributes
         patch item_url(item), params: { item: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested item" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested item' do
       item = Item.create! valid_attributes
-      expect {
+      expect do
         delete item_url(item)
-      }.to change(Item, :count).by(-1)
+      end.to change(Item, :count).by(-1)
     end
 
-    it "redirects to the items list" do
+    it 'redirects to the items list' do
       item = Item.create! valid_attributes
       delete item_url(item)
       expect(response).to redirect_to(items_url)
