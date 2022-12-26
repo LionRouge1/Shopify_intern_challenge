@@ -60,7 +60,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'rails-controller-testing'
-  gem 'rubocop', '>= 1.0', '< 2.0'
+  gem 'rubocop', '1.41.1'
   gem "rspec-rails"
   gem 'web-console'
 
