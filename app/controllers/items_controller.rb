@@ -3,7 +3,8 @@ class ItemsController < ApplicationController
 
   # GET /items or /items.json
   def index
-    @items = Item.all
+    @items = Item.left_joins(:deleted_item)
+      .where(deleted_items: { item_id: nil })
   end
 
   # GET /items/1 or /items/1.json
