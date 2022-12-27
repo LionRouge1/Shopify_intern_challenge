@@ -1,0 +1,21 @@
+<%= form_with(model: deleted_item, url: deleted_path(deleted_item)) do |f| %>
+    <% if deleted_item.errors.any? %>
+        <div class="error-box">
+            <h2><%= pluralize(deleted_item.errors.count, 'error')%></h2>
+            <ul>
+                <% deleted_item.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+        <div class='mb-3 required'>
+            <%= f.label :description, class: 'form-label' %>
+            <%= f.text_field :description, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+            <%= f.submit class: 'btn btn-primary' %>
+        </div>
+<% end %>
