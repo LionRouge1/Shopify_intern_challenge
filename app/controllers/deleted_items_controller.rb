@@ -6,7 +6,9 @@ class DeletedItemsController < ApplicationController
 
   def edit; end
 
-  def create; end
+  def create
+    # render json: { item: render_to_string(partial: 'items/item', layout: false, locals: { item: Item.first }) }
+  end
 
   def update
     if @deleted_item.update(deleted_params)
@@ -17,7 +19,7 @@ class DeletedItemsController < ApplicationController
   end
 
   def destroy
-    if(@deleted_item.destroy)
+    if @deleted_item.destroy
       redirect_to deleted_items_path, notice: 'Item undeleted successfully'
     else
       flash.now[:alert] = 'Sorry something went wrong'
