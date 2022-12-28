@@ -20,11 +20,14 @@ class DeletedItemsController < ApplicationController
   end
 
   def destroy
-    if @deleted_item.destroy
-      redirect_to deleted_items_path, notice: 'Item undeleted successfully'
-    else
-      flash.now[:alert] = 'Sorry something went wrong'
-      render :index
+    respond_to do |format|
+      if @deleted_item.destroy
+        format.html { redirect_to deleted_items_path, notice: 'Item undeleted successfully' }
+        format.js
+      else
+        flash.now[:alert] = 'Sorry something went wrong'
+        format.html { render :index }
+      end
     end
   end
 
