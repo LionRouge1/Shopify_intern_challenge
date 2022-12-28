@@ -1,2 +1,54 @@
-$('#8').remove();
-$('.deleted').append('<%= escape_javascript(render 'items/item', item: Item.first) %>');
+<% if @deleted_item.errors.any? %>
+    $('.show .error-show').html('<%= escape_javascript(render 'shared/errors', errors: @deleted_item.errors)%>')
+<% else %>
+    $('.modal-backdrop').hide();
+    $('#item_<%= @item_id %>').remove();
+    var item = {
+    id: <%= @deleted_item.item.id %>,
+    item_name: '<%= @deleted_item.item.item_name %>',
+    price: <%= @deleted_item.item.price %>,
+    category: '<%= @deleted_item.item.category %>',
+    expire_at: '<%= @deleted_item.item.expire_at %>',
+    description: '<%= @deleted_item.description %>',
+    created_at: '<%= @deleted_item.created_at %>'
+    };
+    var template = `
+    <div id="deleted_item_${item.id}">
+    <p>
+        <strong>Item name:</strong>
+        ${item.item_name}
+    </p>
+    <p>
+        <strong>Price:</strong>
+        ${item.price}
+    </p>
+    <p>
+        <strong>Category:</strong>
+        ${item.category}
+    </p>
+    <p>
+        <strong>Expire at:</strong>
+        ${item.expire_at}
+    </p>
+    <p>
+        <strong>Description</strong>
+        ${item.description}
+    </p>
+    </div>
+    `;
+    var deletedItem = JSON.parse(localStorage.getItem('deletedItem')) || [];
+    var existed = deletedItem.findIndex((deleted) => deleted.id == item.id);
+
+    if(existed >= 0) {
+        deletedItem[existed] = item;
+    } else {
+        if(deletedItem.length >= 3) deletedItem.pop();
+        deletedItem.unshift(item);
+    };
+
+    console.log(deletedItem);
+    deletedItem.forEach((item) => {
+    $('.deleted').append(template);
+    });
+    localStorage.setItem('deletedItem', JSON.stringify(deletedItem));
+<% end %>
