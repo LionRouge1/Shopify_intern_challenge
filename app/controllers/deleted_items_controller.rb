@@ -7,7 +7,8 @@ class DeletedItemsController < ApplicationController
   def edit; end
 
   def create
-    # render json: { item: render_to_string(partial: 'items/item', layout: false, locals: { item: Item.first }) }
+    @item_id = params[:deleted_item][:item_id]
+    @deleted_item = DeletedItem.create(deleted_params)
   end
 
   def update
@@ -34,6 +35,6 @@ class DeletedItemsController < ApplicationController
   end
 
   def deleted_params
-    params.require(:deleted_item).permit(:description)
+    params.require(:deleted_item).permit(:description, :item_id)
   end
 end
