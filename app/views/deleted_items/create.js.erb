@@ -5,50 +5,55 @@
     $('#item_<%= @item_id %>').remove();
     var item = {
     id: <%= @deleted_item.item.id %>,
-    item_name: '<%= @deleted_item.item.item_name %>',
+    deletedId: <%= @deleted_item.id %>,
+    itemName: '<%= @deleted_item.item.item_name %>',
     price: <%= @deleted_item.item.price %>,
     category: '<%= @deleted_item.item.category %>',
-    expire_at: '<%= @deleted_item.item.expire_at %>',
+    expireAt: '<%= @deleted_item.item.expire_at %>',
     description: '<%= @deleted_item.description %>',
-    created_at: '<%= @deleted_item.created_at %>'
+    createdAt: '<%= @deleted_item.created_at %>',
+    deleteLink: '<%= deleted_path(@deleted_item) %>'
     };
+
     var template = `
-    <div id="deleted_item_${item.id}">
-    <p>
-        <strong>Item name:</strong>
-        ${item.item_name}
-    </p>
-    <p>
-        <strong>Price:</strong>
-        ${item.price}
-    </p>
-    <p>
-        <strong>Category:</strong>
-        ${item.category}
-    </p>
-    <p>
-        <strong>Expire at:</strong>
-        ${item.expire_at}
-    </p>
-    <p>
-        <strong>Description</strong>
-        ${item.description}
-    </p>
+    <div id="deleted_item_${item.deletedId}" class="col-lg-3 p-3">
+        <div>
+            <p>
+                <strong>Item name:</strong>
+                ${item.itemName}
+            </p>
+            <p>
+                <strong>Price:</strong>
+                ${item.price}
+            </p>
+            <p>
+                <strong>Category:</strong>
+                ${item.category}
+            </p>
+            <p>
+                <strong>Expire at:</strong>
+                ${item.expireAt}
+            </p>
+            <p>
+                <strong>Description</strong>
+                ${item.description}
+            </p>
+        </div>
+        <a data-remote="true" rel="nofollow" data-method="delete" href="${item.deleteLink}">
+        Undelete</a>
     </div>
     `;
-    var deletedItem = JSON.parse(localStorage.getItem('deletedItem')) || [];
-    var existed = deletedItem.findIndex((deleted) => deleted.id == item.id);
+    var deletedItems = JSON.parse(localStorage.getItem('deletedItems')) || [];
+    var existed = deletedItems.findIndex((deleted) => deleted.id == item.id);
 
     if(existed >= 0) {
-        deletedItem[existed] = item;
+        deletedItems[existed] = item;
     } else {
-        if(deletedItem.length >= 3) deletedItem.pop();
-        deletedItem.unshift(item);
+        if(deletedItems.length >= 3) deletedItems.pop();
+        deletedItems.unshift(item);
     };
 
-    console.log(deletedItem);
-    deletedItem.forEach((item) => {
-    $('.deleted').append(template);
-    });
-    localStorage.setItem('deletedItem', JSON.stringify(deletedItem));
+
+    document.querySelector('.deleted').insertAdjacentHTML('afterbegin', template);
+    localStorage.setItem('deletedItems', JSON.stringify(deletedItems));
 <% end %>
