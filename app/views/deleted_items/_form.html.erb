@@ -26,8 +26,8 @@
           <h5 class="modal-title" id="staticBackdropLabel">Enter description</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <%= form_with(model: deleted_item, url: item_url, data: {'item_id' => item_id, 'remote' => true}) do |f| %>
+        <%= form_with(model: deleted_item, url: item_url, data: {'item_id' => item_id, 'remote' => true}) do |f| %>
+          <div class="modal-body">
             <div class='mb-3 required'>
               <%= f.label :description, class: 'form-label' %>
               <%= f.text_area :description, class: 'form-control', required: true, cols: 10, rows: 5 %>
