@@ -2,7 +2,7 @@
 
 <div id="items">
   <% @items.each do |item| %>
-    <div id="<%= item.id %>" class="card w-50 mb-2 p-2">
+    <div id="<%= dom_id item %>" class="card w-50 mb-2 p-2">
       <div class="d-flex justify-content-between w-50">
         <p>
           <strong>Name:</strong>
@@ -18,7 +18,7 @@
       <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal_<%= item.id %>">
         Delete
       </button>
-      <%= render 'deleted_items/form', deleted_item: Item.new, item_url: deleted_items_path, item_id: item.id %>
+      <%= render 'deleted_items/form', deleted_item: DeletedItem.new, item_url: deleted_items_path, item_id: item.id %>
       </p>
     </div>
   <% end %>
