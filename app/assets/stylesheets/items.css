@@ -1,3 +1,19 @@
+.show .error-show li{
+    color: red;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.deleted {
+    margin-top: 20px;
+}
+
+.deleted > div {
+    box-shadow: rgba(0, 0, 0, 0.151) 0px 0px 10px;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
 .field_with_errors > input {
     background-color: rgba(255, 0, 0, 0.356);
 }
