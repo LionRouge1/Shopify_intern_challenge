@@ -2,29 +2,13 @@
 
 <div id="items">
   <% @items.each do |item| %>
-    <div id="<%= dom_id item %>" class="card w-50 mb-2 p-2">
-      <div class="d-flex justify-content-between w-50">
-        <p>
-          <strong>Name:</strong>
-          <%= item.item_name %>
-        </p>
-        <p>
-          <strong>Category:</strong>
-          <%= item.category %>
-        </p>
-      </div>
-      <p>
-        <%= link_to "Show this item", item %>
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal_<%= item.id %>">
-        Delete
-      </button>
-      <%= render 'deleted_items/form', deleted_item: DeletedItem.new, item_url: deleted_items_path, item_id: item.id %>
-      </p>
-    </div>
+    <%= render 'shared/item', obj: item %>
   <% end %>
 </div>
 
 <%= link_to "New item", new_item_path, class: 'btn btn-primary' %>
 
-<div class="deleted">
+<h2 class="mt-3">Items deleted recently:</h2>
+
+<div data-controller="deleted" data-deleted-target="latest" class="deleted row">
 </div>
