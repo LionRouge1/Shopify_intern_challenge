@@ -28,14 +28,9 @@
         </div>
         <%= form_with(model: deleted_item, url: item_url, data: {'item_id' => item_id, 'remote' => true}) do |f| %>
           <div class="modal-body">
-            <div class='mb-3 required'>
-              <%= f.label :description, class: 'form-label' %>
-              <%= f.text_area :description, class: 'form-control', required: true, cols: 10, rows: 5 %>
+              <%= f.text_area :description, class: 'form-control', required: true, autofocus: true, cols: 10, rows: 5 %>
               <span class="error-show"></span>
-            </div>
-            <div class="mb-3">
               <%= f.hidden_field :item_id, value: item_id, class: 'btn btn-primary' %>
-            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
