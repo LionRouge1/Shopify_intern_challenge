@@ -35,6 +35,12 @@ class DeletedItemsController < ApplicationController
 
   def set_deleted_item
     @deleted_item = DeletedItem.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    update_localstorage(params[:id])
+  end
+
+  def update_localstorage(id)
+    render 'deleted_items/set_deleted_item', locals: { id: }
   end
 
   def deleted_params
