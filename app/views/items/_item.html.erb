@@ -1,23 +1,55 @@
-<div id="<%= dom_id item %>">
-  <p>
-    <strong>Item name:</strong>
-    <%= item.item_name %>
-  </p>
+<% if view === 'show' %>
+  <div id="<%= dom_id item %>">
+    <p>
+      <strong>Item name:</strong>
+      <%= item.item_name %>
+    </p>
 
-  <p>
-    <strong>Price:</strong>
-    <%= item.price %>
-  </p>
+    <p>
+      <strong>Price:</strong>
+      <%= item.price %>
+    </p>
 
 
-  <p>
-    <strong>Category:</strong>
-    <%= item.category %>
-  </p>
+    <p>
+      <strong>Category:</strong>
+      <%= item.category %>
+    </p>
 
-  <p>
-    <strong>Expire at:</strong>
-    <%= item.expire_at %>
-  </p>
+    <p>
+      <strong>Expire at:</strong>
+      <%= item.expire_at %>
+    </p>
 
-</div>
+  </div>
+<% else %>
+  <div id="<%= dom_id item %>" class="card mb-2">
+    <div class="d-flex justify-content-between">
+      <p>
+        <strong>Name:</strong>
+        <%= item.item_name %>
+      </p>
+      <p>
+        <strong>Price:</strong>
+        <%= item.price %>
+      </p>
+      <p>
+        <strong>Category:</strong>
+        <%= item.category %>
+      </p>
+      <% unless item.expire_at.nil? %>
+        <p>
+          <strong>Expire at:</strong>
+          <%= item.expire_at %>
+        </p>
+      <% end %>
+    </div>
+    <div class="buttons">
+      <%= link_to "Show item", item, class: 'btn' %>
+      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal_<%= item.id %>">
+        Delete
+      </button>
+      <%= render 'deleted_items/form', deleted_item: DeletedItem.new, item_url: deleted_items_path, item_id: item.id %>
+    </div>
+  </div>
+<% end %>
