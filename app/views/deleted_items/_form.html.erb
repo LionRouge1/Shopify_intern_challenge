@@ -23,7 +23,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Enter description</h5>
+          <h5 class="modal-title text-black" id="staticBackdropLabel">Motive of deleting this item ?</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <%= form_with(model: deleted_item, url: item_url, data: {'item_id' => item_id, 'remote' => true}) do |f| %>
