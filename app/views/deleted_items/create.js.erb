@@ -1,7 +1,7 @@
 <% if @deleted_item.errors.any? %>
     $('.show .error-show').html('<%= escape_javascript(render 'shared/errors', errors: @deleted_item.errors)%>')
 <% else %>
-    $('.modal-backdrop').hide();
+    $('.modal-backdrop').remove();
     $('#item_<%= @item_id %>').remove();
     var item = {
     id: <%= @deleted_item.item.id %>,
@@ -9,40 +9,33 @@
     itemName: '<%= @deleted_item.item.item_name %>',
     price: <%= @deleted_item.item.price %>,
     category: '<%= @deleted_item.item.category %>',
-    expireAt: '<%= @deleted_item.item.expire_at %>',
-    description: '<%= @deleted_item.description %>',
+    expireAt: '<%= @deleted_item.item.expire_at || 'No expire' %>',
+    description: '<%= @deleted_item.description.strip %>',
     createdAt: '<%= @deleted_item.created_at %>',
     deleteLink: '<%= deleted_path(@deleted_item) %>'
     };
 
-    var template = `
-    <div id="deleted_item_${item.deletedId}" class="col-lg-3 p-3">
-        <div>
-            <p>
-                <strong>Item name:</strong>
-                ${item.itemName}
-            </p>
-            <p>
-                <strong>Price:</strong>
-                ${item.price}
-            </p>
-            <p>
-                <strong>Category:</strong>
-                ${item.category}
-            </p>
-            <p>
-                <strong>Expire at:</strong>
-                ${item.expireAt}
-            </p>
-            <p>
-                <strong>Description</strong>
-                ${item.description}
-            </p>
-        </div>
-        <a data-remote="true" rel="nofollow" data-method="delete" href="${item.deleteLink}">
-        Undelete</a>
-    </div>
-    `;
+    var template = `<div id="deleted_item_${item.deletedId}" class="row mb-2">
+                            <div class="col-9 text-box">
+                                <div class="row justify-content-between title">
+                                    <span class="col">
+                                        ${item.itemName}
+                                    </span>
+                                    <span class="col text-end">
+                                        ${item.category}
+                                    </span>
+                                </div>
+                                <p>
+                                    ${item.description}
+                                </p>
+                            </div>
+                            <div class="col-3 buttons">
+                                <a data-remote="true" rel="nofollow" data-method="delete" href="${item.deleteLink}">
+                                Undelete</a>
+                                <a href="/deleted_items#deleted_item_${item.deletedId}">More..</a>
+                            </div>
+                        </div>
+                        `;
     var deletedItems = JSON.parse(localStorage.getItem('deletedItems')) || [];
     var existed = deletedItems.findIndex((deleted) => deleted.id == item.id);
 
