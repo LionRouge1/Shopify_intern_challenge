@@ -3,43 +3,34 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
     static targets = ['latest'];
     initialize () {
+        this.latestTarget.innerHTML = '';
         this.deletedItems = JSON.parse(localStorage.getItem('deletedItems')) || [];
-    }
-
-    connect () {
         this.deletedItems.forEach((item) => this.lastDeletedItems(item));
     }
 
     lastDeletedItems (item) {
-        let template = `<div id="deleted_item_${item.deletedId}" class="col-lg-3 p-3">
-                            <div>
+        let template = `<div id="deleted_item_${item.deletedId}" class="row mb-2">
+                            <div class="col-9 text-box">
+                                <div class="row justify-content-between title">
+                                    <span class="col">
+                                        ${item.itemName}
+                                    </span>
+                                    <span class="col text-end">
+                                        ${item.category}
+                                    </span>
+                                </div>
                                 <p>
-                                    <strong>Item name:</strong>
-                                    ${item.item_name}
-                                </p>
-                                <p>
-                                    <strong>Price:</strong>
-                                    ${item.price}
-                                </p>
-                                <p>
-                                    <strong>Category:</strong>
-                                    ${item.category}
-                                </p>
-                                <p>
-                                    <strong>Expire at:</strong>
-                                    ${item.expire_at}
-                                </p>
-                                <p>
-                                    <strong>Description</strong>
                                     ${item.description}
                                 </p>
                             </div>
-                            <a data-remote="true" rel="nofollow" data-method="delete" href="${item.deleteLink}">
-                            Undelete</a>
+                            <div class="col-3 buttons">
+                                <a data-remote="true" rel="nofollow" data-method="delete" href="${item.deleteLink}">
+                                Undelete</a>
+                                <a href="/deleted_items#deleted_item_${item.deletedId}">More..</a>
+                            </div>
                         </div>
                         `;
-        this.latestTarget.insertAdjacentHTML('afterbegin', template);
+        this.latestTarget.insertAdjacentHTML('beforeend', template);
     }
-
 
 }
