@@ -4,5 +4,6 @@
     <p><strong>City:</strong> <%= warehouse.city %></p>
     <p><strong>Address:</strong> <%= warehouse.address %></p>
 </div>
-
-<%= link_to 'show warehouse', warehouse %>
+<% if defined?(view) %>
+  <%= link_to 'show warehouse', warehouse %>
+<% end %>
