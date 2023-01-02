@@ -22,9 +22,22 @@ class WarehousesController < ApplicationController
     end
   end
 
-  def update; end
+  def update
+    if @warehouse.update(warehouse_params)
+      redirect_to @warehouse, notice: 'Warehouse was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
-  def destroy; end
+  def destroy
+    if @warehouse.destroy
+      redirect_to @warehouse, notice: 'Warehouse was successfully destroyed.'
+    else
+      flash[:alert] = 'Warehouse was not destroyed.'
+      redirect_to @warehouse, alert: 'Warehouse was not destroyed.'
+    end
+  end
 
   private
 
