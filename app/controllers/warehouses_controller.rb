@@ -5,7 +5,9 @@ class WarehousesController < ApplicationController
     @warehouses = Warehouse.all
   end
 
-  def show; end
+  def show
+    @wa
+  end
 
   def new
     @warehouse = Warehouse.new
