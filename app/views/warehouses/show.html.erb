@@ -1,4 +1,12 @@
-<%= render @warehouse %>
+<section class="show-warehouse">
+    <div class="head">
+        <h2>Warehouse name: <%= @warehouse.name %></h2>
+        <p>Country: <%= @warehouse.country %></p>
+        <p>City: <%= @warehouse.city %></p>
+        <p>Address: <%= @warehouse.address %></p>
+    </div>
+    <div class="body"></div>
+</section>
 
 <div class="links">
     <%= link_to 'Edit warehouse', edit_warehouse_path(@warehouse) %>
