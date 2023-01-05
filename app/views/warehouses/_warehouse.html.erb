@@ -1,6 +1,8 @@
-<div id="<%= dom_id warehouse %>" class="card m-2">
-    <p><strong>Warehouse name:</strong> <%= warehouse.name %></p>
-    <p><strong>Country:</strong> <%= warehouse.country %></p>
-    <p><strong>City:</strong> <%= warehouse.city %></p>
-    <p><strong>Address:</strong> <%= warehouse.address %></p>
-</div>
+<%= link_to warehouse_path(warehouse) do %>
+    <div id="<%= dom_id warehouse %>" class="card m-2">
+        <p><strong>Warehouse name:</strong> <%= warehouse.name %></p>
+        <p><strong>Country:</strong> <%= warehouse.country %></p>
+        <p><strong>City:</strong> <%= warehouse.city %></p>
+        <p><strong>Address:</strong> <%= warehouse.address %></p>
+    </div>
+<% end %>
