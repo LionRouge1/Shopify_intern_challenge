@@ -6,7 +6,7 @@ class WarehousesController < ApplicationController
   end
 
   def show
-    @wa
+    @items = @warehouse.items_warehouses.includes(:item)
   end
 
   def new
