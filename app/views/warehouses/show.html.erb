@@ -5,7 +5,11 @@
         <p>City: <%= @warehouse.city %></p>
         <p>Address: <%= @warehouse.address %></p>
     </div>
-    <div class="body"></div>
+    <div class="body">
+        <% @items.each do |item| %>
+          <%= render 'items/item', locals: { item: item, view: 'show' }%>
+        <% end %>
+    </div>
 </section>
 
 <div class="links">
