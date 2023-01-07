@@ -19,5 +19,5 @@ class WarehouseItem < ApplicationRecord
   # after_destroy_commit -> { broadcast_remove_to 'warehouse_items' }
 
   # Those three callbacks are equivalent to the following single line
-  broadcasts_to ->(warehouse_item) { 'warehouse_items' }, inserts_by: :prepend
+  broadcasts_to ->(_warehouse_item) { 'warehouse_items' }, inserts_by: :prepend
 end

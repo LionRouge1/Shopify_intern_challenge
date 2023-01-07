@@ -13,7 +13,7 @@ class WarehouseItemsController < ApplicationController
 
     if @warehouse_item.save
       respond_to do |format|
-        format.html { redirect_to warehouse_path(@warehouse), notice: 'Warehouse item created successfully'}
+        format.html { redirect_to warehouse_path(@warehouse), notice: 'Warehouse item created successfully' }
         format.turbo_stream
       end
     else
