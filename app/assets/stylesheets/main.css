@@ -20,3 +20,7 @@ body {
     padding: 0;
     margin: 0;
 }
+
+.turbo-progress-bar {
+    background: linear-gradient(to right, red, blue);
+}
