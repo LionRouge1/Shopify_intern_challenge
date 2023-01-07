@@ -6,7 +6,7 @@ class WarehousesController < ApplicationController
   end
 
   def show
-    @items = @warehouse.items_warehouses.includes(:item)
+    @warehouse_items = @warehouse.warehouse_items.includes(:item).ordered
   end
 
   def new
