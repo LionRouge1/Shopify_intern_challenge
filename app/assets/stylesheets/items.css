@@ -1,116 +1,114 @@
 #items .card {
-    height: 100px;
-    padding: 0.5em 35px;
-    border: none;
-    color: white;
-    /* background-color: rgba(243, 248, 252, 0.664); */
-    background: radial-gradient(at 100% 0, #038af8, #4eacfa, #e9f3fc 100%);
-    position: relative;
-}
+  height: 100px;
+  padding: 0.5em 35px;
+  border: none;
+  color: white;
 
-#items .card > .buttons {
-    position: absolute;
-    display: flex;
-    bottom: 0;
-    left: 0;
-}
-
-#items .card > .buttons > .btn {
-    margin: 0 ;
-    border: none;
-    border-radius: 0;
-    color: white;
-}
-
-#items .card > .buttons > a {
-    background-color: rgba(0, 64, 255, 0.89);
-}
-
-#items .card > .buttons > button {
-    background-color: rgba(255, 0, 0, 0.89);
-}
-
-#items .card > .buttons > a:hover {
-    background-color: rgba(0, 64, 255, 0.33);
-}
-
-#items .card > .buttons > button:hover {
-    background-color: rgba(255, 0, 0, 0.452);
-}
-
-.show .error-show li{
-    color: red;
-    font-size: 14px;
-    font-style: italic;
-}
-
-.deleted {
-    margin-top: 20px;
-}
-
-.deleted .text-box {
-    padding: 10px;
-}
-
-.deleted .title > span {
-    font-size: 14px;
-    color: var(--clr-title);
-}
-
-.deleted .text-box > p {
-    font-style: italic;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.deleted > div {
-    box-shadow: #ccc 0px 0px 5px;
-    border-radius: 10px;
+  /* background-color: rgba(243, 248, 252, 0.664); */
+  background: radial-gradient(at 100% 0, #038af8, #4eacfa, #e9f3fc 100%);
+  position: relative;
 }
 
 .deleted .buttons {
-    padding: 0;
-    margin: 0;
-}
-
-.deleted .buttons {
-    display: grid;
-    grid-template-rows: 50% 50%;
-    border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  border-radius: 10px;
 }
 
 .deleted .buttons > a {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    width: 100%;
-    height: 100%;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  width: 100%;
+  height: 100%;
 }
 
 .deleted .buttons > a:nth-child(1) {
-    background-color: rgb(255, 102, 0);
-    border-radius: 0 10px 0 0;
+  background-color: rgb(255, 102, 0);
+  border-radius: 0 10px 0 0;
 }
 
 .deleted .buttons > a:nth-child(2) {
-    background-color: blue;
-    border-radius: 0 0 10px 0;
+  background-color: blue;
+  border-radius: 0 0 10px 0;
+}
+
+#items .card > .buttons {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  left: 0;
+}
+
+#items .card > .buttons > .btn {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  color: white;
+}
+
+#items .card > .buttons > a {
+  background-color: rgba(0, 64, 255, 0.89);
+}
+
+#items .card > .buttons > button {
+  background-color: rgba(255, 0, 0, 0.89);
+}
+
+#items .card > .buttons > a:hover {
+  background-color: rgba(0, 64, 255, 0.33);
+}
+
+#items .card > .buttons > button:hover {
+  background-color: rgba(255, 0, 0, 0.452);
+}
+
+.show .error-show li {
+  color: red;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.deleted {
+  margin-top: 20px;
+}
+
+.deleted .text-box {
+  padding: 10px;
+}
+
+.deleted .title > span {
+  font-size: 14px;
+  color: var(--clr-title);
+}
+
+.deleted .text-box > p {
+  font-style: italic;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.deleted > div {
+  box-shadow: #ccc 0 0 5px;
+  border-radius: 10px;
 }
 
 .field_with_errors > input {
-    background-color: rgba(255, 0, 0, 0.356);
+  background-color: rgba(255, 0, 0, 0.356);
 }
 
 .field_with_errors > label {
-    color: red;
+  color: red;
 }
 
 .required > label::after {
-    content: ' *';
-    color: red;
+  content: ' *';
+  color: red;
 }

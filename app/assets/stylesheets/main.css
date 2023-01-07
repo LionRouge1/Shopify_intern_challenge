@@ -1,26 +1,26 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --clr-title: #999393;
+  --clr-title: #999393;
 }
 
 body {
-    min-height: 100%;
+  min-height: 100%;
 }
 
 .col-lg-3 {
-    padding: 0;
+  padding: 0;
 }
 
 .row > .col-2 {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .turbo-progress-bar {
-    background: linear-gradient(to right, red, blue);
+  background: linear-gradient(to right, red, blue);
 }
