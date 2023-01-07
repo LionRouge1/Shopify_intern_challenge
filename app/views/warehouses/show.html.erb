@@ -1,3 +1,4 @@
+<%= turbo_stream_from 'warehouse_items'%>
 <section class="show-warehouse">
     <div class="head">
         <h2>Warehouse name: <%= @warehouse.name %></h2>
@@ -5,9 +6,16 @@
         <p>City: <%= @warehouse.city %></p>
         <p>Address: <%= @warehouse.address %></p>
     </div>
+        <%= link_to 'Add Item',
+            new_warehouse_warehouse_item_path(@warehouse),
+            data: { turbo_frame: dom_id(WarehouseItem.new) }
+        %>
     <div class="body">
-        <% @items.each do |item| %>
-          <%= render 'items/item', locals: { item: item, view: 'show' }%>
+        <%= turbo_frame_tag WarehouseItem.new %>
+        <%= turbo_frame_tag 'warehouse_items' do %>
+            <% @warehouse_items.each do |item| %>
+                <%= render 'warehouse_items/warehouse_item', warehouse_item: item %>
+            <% end %>
         <% end %>
     </div>
 </section>
