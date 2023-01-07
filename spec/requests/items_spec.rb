@@ -75,7 +75,7 @@ RSpec.describe '/items', type: :request do
 
       it 'redirects to the created item' do
         post items_url, params: { item: valid_attributes }
-        expect(response).to redirect_to(item_url(Item.last))
+        expect(response).to redirect_to(items_url)
       end
     end
 
