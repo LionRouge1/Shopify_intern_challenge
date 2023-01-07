@@ -1,0 +1,11 @@
+<%= turbo_frame_tag dom_id(warehouse_item) do %>
+    <div class="item">
+        <p><%= warehouse_item.item.item_name%></p>
+        <p><%= warehouse_item.item.category%></p>
+        <p><%= warehouse_item.quantity%></p>
+        <p>
+            <%= link_to 'Edit', edit_warehouse_warehouse_item_path(warehouse_item.warehouse, warehouse_item) %>
+            <%= button_to 'Delete', warehouse_warehouse_item_path(warehouse_item.warehouse, warehouse_item), method: :delete %>
+        </p>
+    </div>
+<% end %>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :items
   resources :warehouses do
-    resources :items_warehouses
+    resources :warehouse_items
   end
   get '/deleted_items/:id/edit', to: 'deleted_items#edit', as: 'edit_deleted'
   get '/deleted_items', to: 'deleted_items#index'
