@@ -13,4 +13,13 @@
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
-@import '*'
+
+@import "mixins/media";
+
+@import "config/variables";
+@import "config/reset";
+
+@import "components/error_message";
+@import "components/item";
+@import "components/delete";
+@import "components/turbo-progress-bar";

@@ -1,0 +1,7 @@
+@mixin media($breakpoint) {
+    @if $breakpoint == phoneAndUp {
+        @media (min-width: 320px) {
+            @content;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.error-message {
+    width: 100%;
+    color: var(--color-primary);
+    background-color: var(--color-primary-bg);
+    padding: var(--space-xs);
+    border-radius: var(--border-radius);
+  }
+
+  .field_with_errors > input {
+    background-color: rgba(255, 0, 0, 0.356);
+  }
+  
+  .field_with_errors > label {
+    color: red;
+  }
+
+  .show .error-show li {
+    color: red;
+    font-size: 14px;
+    font-style: italic;
+  }
