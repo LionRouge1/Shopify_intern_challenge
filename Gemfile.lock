@@ -288,6 +288,7 @@ DEPENDENCIES
   redis (~> 4.0)
   rspec-rails
   rubocop (= 1.41.1)
+  sassc-rails
   selenium-webdriver
   sprockets-rails
   stimulus-rails
