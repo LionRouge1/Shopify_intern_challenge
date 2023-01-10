@@ -34,6 +34,11 @@
   .deleted .text-box {
     padding: 10px;
   }
+
+  .deleted .title {
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+  }
   
   .deleted .title > span {
     font-size: 14px;
@@ -42,6 +47,7 @@
   
   .deleted .text-box > p {
     font-style: italic;
+    padding: 5px 0;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
@@ -51,4 +57,5 @@
   .deleted > div {
     box-shadow: #ccc 0 0 5px;
     border-radius: 10px;
+    background-color: white;
   }
