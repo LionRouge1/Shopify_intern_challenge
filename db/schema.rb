@@ -31,14 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_045516) do
     t.decimal "price"
   end
 
-  create_table "items_warehouses", id: false, force: :cascade do |t|
-    t.bigint "warehouse_id", null: false
-    t.bigint "item_id", null: false
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "warehouse_items", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "warehouse_id", null: false
