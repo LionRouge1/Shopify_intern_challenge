@@ -8,6 +8,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--font-family);
 }
 
 html {
@@ -15,7 +16,30 @@ html {
     height: 100%;
 }
 
+body {
+  background-image: url('background.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1,
+h2,
+h4{
+  color: var(--color-text-header);
+  text-align: center;
+  font-weight: bold;
+}
+
 .required > label::after {
   content: ' *';
   color: red;
+}
+
+.navbar a {
+  color: var(--color-tertiary);
+}
+
+.navbar .active {
+  color: var(--color-primary) !important;
+  font-weight: 510;
 }
