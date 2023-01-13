@@ -15,7 +15,7 @@ class DeletedItemsController < ApplicationController
     if @deleted_item.update(deleted_params)
       redirect_to deleted_items_path, notice: 'Item was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -26,7 +26,7 @@ class DeletedItemsController < ApplicationController
         format.js
       else
         flash.now[:alert] = 'Sorry something went wrong'
-        format.html { render :index }
+        format.html { render :index, status: :unprocessable_entity }
       end
     end
   end
