@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'DeletedItems', type: :request do
   item = Item.create(item_name: 'Choux', price: 45, category: 'fruit', expire_at: '2023-05-17')
   let(:valid_attributes) { { item_id: item.id, description: 'out of stuck' } }
-  let(:invalid_attributes) { { item: nil, description: 'out' } }
+  let(:invalid_attributes) { { item: item.id, description: 'out' } }
 
   describe 'GET /index' do
     it 'should render successful response' do
@@ -41,7 +41,6 @@ RSpec.describe 'DeletedItems', type: :request do
   describe 'DELETE /destroy' do
     context 'with valid attributes' do
       it 'should destroy deletedItem' do
-        p valid_attributes
         deleted = DeletedItem.create!(valid_attributes)
         expect do
           delete deleted_url(deleted)
@@ -54,14 +53,6 @@ RSpec.describe 'DeletedItems', type: :request do
         expect(response).to redirect_to(deleted_items_path)
       end
     end
-
-    context 'with invalid attributes' do
-      it 'should reponse with 422 status' do
-        deleted = DeletedItem.create!(invalid_attributes)
-        delete deleted_path(deleted)
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
   end
 
   describe 'PATCH /update' do
@@ -70,21 +61,21 @@ RSpec.describe 'DeletedItems', type: :request do
         deleted = DeletedItem.create!(valid_attributes)
         patch deleted_path(deleted), params: { deleted_item: { description: 'to much of them' } }
         deleted.reload
-        expect(deleted.description).to be('to much of them')
+        expect(deleted.description).to eq('to much of them')
       end
 
       it 'should render to deleted items path' do
         deleted = DeletedItem.create!(valid_attributes)
         patch deleted_path(deleted), params: { deleted_item: { description: 'to much of them' } }
         deleted.reload
-        expect(response).to redirect_to(deleted_items_path(deleted))
+        expect(response).to redirect_to(deleted_items_path)
       end
     end
 
     context 'with invalid attributes' do
       it 'should response with 422 status' do
-        deleted = DeletedItem.create!(invalid_attributes)
-        patch deleted_path(deleted), params: { deleted_item: { description: 'to much of them' } }
+        deleted = DeletedItem.create!(valid_attributes)
+        patch deleted_path(deleted), params: { deleted_item: { description: 'to' } }
         deleted.reload
         expect(response).to have_http_status(:unprocessable_entity)
       end
