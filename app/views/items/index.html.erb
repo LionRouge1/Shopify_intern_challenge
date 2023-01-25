@@ -1,6 +1,8 @@
 <section class="row justify-content-around">
   <div id="items" class="col-md-7">
     <h2>Items</h2>
+
+    <%= will_paginate @items, renderer: BootstrapPagination::Rails, previous_label: "Previous", next_label: "Next" %>
     <div>
       <% @items.each do |item| %>
         <%= render item, view: 'index' %>
