@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.left_joins(:deleted_item)
       .where(deleted_items: { item_id: nil })
+      .paginate(page: params[:page], per_page: 5)
   end
 
   # GET /items/1 or /items/1.json
