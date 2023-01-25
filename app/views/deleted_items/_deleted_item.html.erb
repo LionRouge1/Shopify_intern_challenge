@@ -1,28 +1,27 @@
-<div id="<%= dom_id deleted_item %>">
+<div id="<%= dom_id deleted_item %>" class="mb-4">
   <p>
     <strong>Item name:</strong>
     <%= deleted_item.item.item_name %>
   </p>
-
   <p>
     <strong>Price:</strong>
     <%= deleted_item.item.price %>
   </p>
-
-
   <p>
     <strong>Category:</strong>
     <%= deleted_item.item.category %>
   </p>
-
   <p>
     <strong>Expire at:</strong>
     <%= deleted_item.item.expire_at || 'No expire' %>
   </p>
-
-   <p>
+  <p>
     <strong>Description</strong>
     <%= deleted_item.description %>
   </p>
-
+  <div class="links row">
+    <%= link_to 'Item', item_path(deleted_item.item), class: 'btn btn-primary me-3' %>
+    <%= link_to 'Edit item', edit_deleted_path(deleted_item), class: 'btn btn-primary me-3' %>
+    <%= link_to 'Undelete', deleted_path(deleted_item), method: :delete, class: 'btn btn-danger' %>
+  </div>
 </div>
