@@ -1,0 +1,5 @@
+$('#deleted_item_<%= id %>').remove()
+var deletedItems = JSON.parse(localStorage.getItem('deletedItems')) || [];
+var index = deletedItems.findIndex((item) => item.deletedId == <%= id %>);
+var udpateItems = [...deletedItems.slice(0, index), ...deletedItems.slice(index+1)]
+localStorage.setItem('deletedItems', JSON.stringify(udpateItems));

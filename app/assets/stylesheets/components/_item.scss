@@ -1,0 +1,62 @@
+#items .card {
+  height: 100px;
+  padding: 0.5em 35px;
+  border: none;
+  color: white;
+
+  /* background-color: rgba(243, 248, 252, 0.664); */
+  background: radial-gradient(at 100% 0, #038af8, #4eacfa, #e9f3fc 100%);
+  position: relative;
+}
+
+#items .card > .buttons {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  left: 0;
+}
+
+#items .card > .buttons > .btn {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  color: white;
+}
+
+#items .card > .buttons > a {
+  background-color: rgba(0, 64, 255, 0.89);
+}
+
+#items .card > .buttons > button {
+  background-color: rgba(255, 0, 0, 0.89);
+}
+
+#items .card > .buttons > a:hover {
+  background-color: rgba(0, 64, 255, 0.33);
+}
+
+#items .card > .buttons > button:hover {
+  background-color: rgba(255, 0, 0, 0.452);
+}
+
+.item {
+  width: max-content;
+  min-width: 250px;
+}
+
+.item-edit {
+  width: 40%;
+
+  @include media(phoneAndUp) {
+    width: 100%;
+  }
+}
+
+.col-lg-3 {
+  padding: 0;
+}
+
+.row > .col-2 {
+  padding: 0;
+  margin: 0;
+}

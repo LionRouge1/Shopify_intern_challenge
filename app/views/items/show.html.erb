@@ -1,0 +1,8 @@
+<%= render @item, view: 'show' %>
+
+<div data-controller="items">
+  <%= link_to "Edit this item", edit_item_path(@item) %> |
+  <%= link_to "Back to items", items_path %>
+
+  <%= button_to "Destroy this item", @item, method: :delete, data: {action: 'items#delete'} %>
+</div>

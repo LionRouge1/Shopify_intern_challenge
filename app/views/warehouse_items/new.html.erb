@@ -1,0 +1,6 @@
+<h2>Add warehouse item</h2>
+<%= link_to sanitize("&larr; Back to warehouse"), warehouse_path(@warehouse) %>
+
+<%= turbo_frame_tag @warehouse_item do %>
+    <%= render 'form', warehouse_item: @warehouse_item, warehouse: @warehouse %>
+<% end %>

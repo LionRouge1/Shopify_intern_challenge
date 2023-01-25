@@ -1,0 +1,43 @@
+<% if defined?(item_id).nil? %>
+  <%= form_with(model: deleted_item, url: item_url) do |f| %>
+    <% if deleted_item.errors.any? %>
+      <div class="error-box">
+        <h2><%= pluralize(deleted_item.errors.count, 'error')%></h2>
+        <ul>
+          <% deleted_item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class='mb-3 required'>
+      <%= f.label :description, class: 'form-label' %>
+      <%= f.text_area :description, class: 'form-control', required: true, cols: 10, rows: 5 %>
+    </div>
+    <div class="mb-3">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="modal fade" id="modal_<%= item_id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-black" id="staticBackdropLabel">Motive of deleting this item ?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <%= form_with(model: deleted_item, url: item_url, data: {'item_id' => item_id, 'remote' => true}) do |f| %>
+          <div class="modal-body">
+              <%= f.text_area :description, class: 'form-control', required: true, autofocus: true, cols: 10, rows: 5 %>
+              <span class="error-show"></span>
+              <%= f.hidden_field :item_id, value: item_id, class: 'btn btn-primary' %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <%= f.submit 'Delete Item', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<section class="row justify-content-around">
+  <div id="items" class="col-md-7">
+    <h2>Items</h2>
+
+    <%= will_paginate @items, renderer: BootstrapPagination::Rails, previous_label: "Previous", next_label: "Next" %>
+    <div>
+      <% @items.each do |item| %>
+        <%= render item, view: 'index' %>
+      <% end %>
+    </div>
+    <%= link_to "New item", new_item_path, class: 'btn btn-primary' %>
+  </div>
+
+  <div data-controller="deleted" class="col-md-3">
+    <h4>Recently deleted items</h4>
+    <div data-deleted-target="latest" class="deleted">
+    </div>
+  </div>
+</section>
