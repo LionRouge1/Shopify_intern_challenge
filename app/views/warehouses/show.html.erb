@@ -1,28 +1,29 @@
 <%= turbo_stream_from 'warehouse_items'%>
 <section class="show-warehouse">
-    <div class="head">
-        <h2>Warehouse name: <%= @warehouse.name %></h2>
-        <p>Country: <%= @warehouse.country %></p>
-        <p>City: <%= @warehouse.city %></p>
-        <p>Address: <%= @warehouse.address %></p>
+  <h2>Warehouse name: <%= @warehouse.name %></h2>
+  <div class="row mb-4 justify-content-center">
+    <div class="head col-sm-7 row me-3 border border-primary rounded">
+      <p class="col-md-4">Country: <%= @warehouse.country %></p>
+      <p class="col-md-4">City: <%= @warehouse.city %></p>
+      <p class="col-md-4">Address: <%= @warehouse.address %></p>
     </div>
-        <%= link_to 'Add Item',
+    <%= link_to 'Add Item',
             new_warehouse_warehouse_item_path(@warehouse),
-            data: { turbo_frame: dom_id(WarehouseItem.new) }
+            data: { turbo_frame: dom_id(WarehouseItem.new) },
+            class: 'btn btn-primary col-sm-3'
         %>
-    <div class="body">
-        <%= turbo_frame_tag WarehouseItem.new %>
-        <%= turbo_frame_tag 'warehouse_items' do %>
-            <% @warehouse_items.each do |item| %>
-                <%= render 'warehouse_items/warehouse_item', warehouse_item: item %>
-            <% end %>
-        <% end %>
-    </div>
+  </div>
+  <div class="body">
+    <%= turbo_frame_tag WarehouseItem.new %>
+    <%= turbo_frame_tag 'warehouse_items' do %>
+      <% @warehouse_items.each do |item| %>
+        <%= render 'warehouse_items/warehouse_item', warehouse_item: item %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="links row">
+    <%= link_to 'Edit warehouse', edit_warehouse_path(@warehouse), class: 'btn btn-primary col-sm-4 me-3' %>
+    <%= link_to 'Back', warehouses_path, class: 'btn btn-primary col-sm-4' %>
+    <%= button_to 'Destroy', warehouse_path(@warehouse), method: :delete, class: 'btn btn-danger col-sm-4' %>
+  </div>
 </section>
-
-<div class="links">
-    <%= link_to 'Edit warehouse', edit_warehouse_path(@warehouse) %>
-    <%= link_to 'Back', warehouses_path %>
-
-    <%= button_to 'Destroy', warehouse_path(@warehouse), method: :delete %>
-</div>
