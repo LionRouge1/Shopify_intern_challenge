@@ -1,7 +1,7 @@
 @mixin media($breakpoint) {
-    @if $breakpoint == phoneAndUp {
-        @media (max-width: 620px) {
-            @content;
-        }
+  @if $breakpoint == phoneAndUp {
+    @media (max-width: 620px) {
+      @content;
     }
+  }
 }

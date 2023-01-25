@@ -1,61 +1,61 @@
 .deleted .buttons {
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-rows: 50% 50%;
-    border-radius: 10px;
-  }
-  
-  .deleted .buttons > a {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .deleted .buttons > a:nth-child(1) {
-    background-color: rgb(255, 102, 0);
-    border-radius: 0 10px 0 0;
-  }
-  
-  .deleted .buttons > a:nth-child(2) {
-    background-color: blue;
-    border-radius: 0 0 10px 0;
-  }
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  border-radius: 10px;
+}
+
+.deleted .buttons > a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  width: 100%;
+  height: 100%;
+}
+
+.deleted .buttons > a:nth-child(1) {
+  background-color: rgb(255, 102, 0);
+  border-radius: 0 10px 0 0;
+}
+
+.deleted .buttons > a:nth-child(2) {
+  background-color: blue;
+  border-radius: 0 0 10px 0;
+}
 
 .deleted {
-    margin-top: 20px;
-  }
-  
-  .deleted .text-box {
-    padding: 10px;
-  }
+  margin-top: 20px;
+}
 
-  .deleted .title {
-    border-bottom: 1px solid #ccc;
-    padding: 5px 0;
-  }
-  
-  .deleted .title > span {
-    font-size: 14px;
-    color: var(--clr-title);
-  }
-  
-  .deleted .text-box > p {
-    font-style: italic;
-    padding: 5px 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  .deleted > div {
-    box-shadow: #ccc 0 0 5px;
-    border-radius: 10px;
-    background-color: white;
-  }
+.deleted .text-box {
+  padding: 10px;
+}
+
+.deleted .title {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 0;
+}
+
+.deleted .title > span {
+  font-size: 14px;
+  color: var(--clr-title);
+}
+
+.deleted .text-box > p {
+  font-style: italic;
+  padding: 5px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.deleted > div {
+  box-shadow: #ccc 0 0 5px;
+  border-radius: 10px;
+  background-color: white;
+}
