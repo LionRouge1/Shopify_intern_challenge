@@ -1,23 +1,22 @@
 <h2>Edit warehouse item</h2>
-
 <%= turbo_frame_tag dom_id(@warehouse_item) do %>
-    <%= form_with(model:[@warehouse, @warehouse_item], url: warehouse_warehouse_item_path(@warehouse)) do |f| %>
+  <%= form_with(model:[@warehouse, @warehouse_item], url: warehouse_warehouse_item_path(@warehouse), class: 'item-edit mb-3') do |f| %>
     <% if @warehouse_item.errors.any? %>
-        <ul class="errors">
-            <% @warehouse_item.errors.full_messages.each do |message| %>
-              <li><%= message.inspect %></li>
-            <% end %>
-        </ul>
+      <ul class="errors">
+        <% @warehouse_item.errors.full_messages.each do |message| %>
+          <li><%= message.inspect %></li>
+        <% end %>
+      </ul>
     <% end %>
-        <div class="modal-body">
-            <div class="mb-3">
-                <%= f.label :quantity, class: "col-form-label"%>
-                <%= f.number_field :quantity, class: "form-control" %>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <%= link_to 'Close', warehouse_path(@warehouse), class: 'btn btn-secondary'%>
-            <%= f.submit class: "btn btn-primary" %>
-        </div>
-<% end %>
+    <div class="modal-body">
+      <div class="mb-3">
+        <%= f.label :quantity, class: "col-form-label"%>
+        <%= f.number_field :quantity, class: "form-control", placeholder: ' Enter Quantity' %>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <%= link_to 'Close', warehouse_path(@warehouse), class: 'btn btn-secondary'%>
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
 <% end %>
