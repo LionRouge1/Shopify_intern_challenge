@@ -39,6 +39,19 @@
     background-color: rgba(255, 0, 0, 0.452);
   }
 
+  .item {
+    width: max-content;
+    min-width: 250px;
+  }
+
+  .item-edit {
+    width: 40%;
+
+    @include media(phoneAndUp) {
+      width: 100%;
+    }
+  }
+
   .col-lg-3 {
     padding: 0;
   }
