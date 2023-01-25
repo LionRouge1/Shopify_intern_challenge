@@ -2,7 +2,4 @@
 
 <% @deleted_items.each do |item| %>
   <%= render item %>
-  <%= link_to 'Item', item_path(item.item) %> |
-  <%= link_to 'Edit item', edit_deleted_path(item) %> | 
-  <%= link_to 'Undelete', deleted_path(item), method: :delete %>
 <% end %>
