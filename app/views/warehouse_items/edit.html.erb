@@ -10,13 +10,14 @@
     <% end %>
     <div class="modal-body">
       <div class="mb-3">
+        <p>Name: <%= @warehouse_item.item.item_name %> </p>
         <%= f.label :quantity, class: "col-form-label"%>
         <%= f.number_field :quantity, class: "form-control", placeholder: ' Enter Quantity' %>
       </div>
     </div>
     <div class="modal-footer">
-      <%= link_to 'Close', warehouse_path(@warehouse), class: 'btn btn-secondary'%>
-      <%= f.submit class: "btn btn-primary" %>
+      <%= link_to 'Cancel', warehouse_path(@warehouse), class: 'btn btn-secondary me-2'%>
+      <%= f.submit 'Update', class: "btn btn-primary" %>
     </div>
   <% end %>
 <% end %>

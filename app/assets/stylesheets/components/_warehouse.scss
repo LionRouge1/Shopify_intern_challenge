@@ -11,7 +11,9 @@
     display: inline-block;
 
     &-edit {
-      width: 40%;
+      width: max-content;
+      min-width: 250px;
+      display: inline-block;
 
       @include media(phoneAndUp) {
         width: 100%;
