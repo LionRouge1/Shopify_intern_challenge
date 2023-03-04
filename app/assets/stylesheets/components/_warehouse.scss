@@ -1,7 +1,21 @@
 .warehouse {
   color: black;
 
-  &s > a {
+  &s>a {
     text-decoration: none;
+  }
+
+  &-item {
+    width: max-content;
+    min-width: 250px;
+    display: inline-block;
+
+    &-edit {
+      width: 40%;
+
+      @include media(phoneAndUp) {
+        width: 100%;
+      }
+    }
   }
 }

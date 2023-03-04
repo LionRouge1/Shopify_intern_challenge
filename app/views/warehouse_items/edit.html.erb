@@ -1,6 +1,6 @@
 <h2>Edit warehouse item</h2>
 <%= turbo_frame_tag dom_id(@warehouse_item) do %>
-  <%= form_with(model:[@warehouse, @warehouse_item], url: warehouse_warehouse_item_path(@warehouse), class: 'item-edit mb-3') do |f| %>
+  <%= form_with(model:[@warehouse, @warehouse_item], url: warehouse_warehouse_item_path(@warehouse), class: 'warehouse-item-edit mb-3') do |f| %>
     <% if @warehouse_item.errors.any? %>
       <ul class="errors">
         <% @warehouse_item.errors.full_messages.each do |message| %>
